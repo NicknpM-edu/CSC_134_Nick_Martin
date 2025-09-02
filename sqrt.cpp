@@ -12,7 +12,7 @@ int main()
     int result = num1/num1;
 
     //use the std output for the console and print product
-    std::cout<< result. << std::endl;
+    std::cout<< result << std::endl;
 
     //end method
     return 0;
