@@ -4,13 +4,13 @@
 
 //iostream
 #include <iostream>
+#include <cmath>
 
 //game start
 int main()
 {
     int num1 = 25;
-    int result = num1/num1;
-
+    int result = sqrt(num1);
     //use the std output for the console and print product
     std::cout<< result << std::endl;
 
