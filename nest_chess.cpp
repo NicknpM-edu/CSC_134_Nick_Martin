@@ -14,13 +14,24 @@ int main()
     cin>> givre; //recieve input as givre
 
     for(int loopo = 0;loopo<givre;loopo++){ //run loop from zero to userdefined
-        for(int loopi = 0;loopi<givre;loopi++){ //run loop from zero to loopo
+        
+        for(int loopi = 0;loopi<givre;loopi++){ //run loop from zero to userdefined
 
-            if(loopi%help){
-                cout<<"*";
+            if(loopi%2){//MAKE THE ALTERNATING DESIGN
+                if(loopo%2){
+                    cout<<"*";
+                }
+                else{
+                    cout<<"  ";
+                }
             }
             else{
-                cout<<" ";
+                if(loopo%2){
+                    cout<<"  ";
+                }
+                else{
+                    cout<<"*";
+                }
             }
         }
         cout<<endl;
