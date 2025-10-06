@@ -1,6 +1,6 @@
 //@author: Nick Martin
 //@date started: 10/1/2025
-//@last updated: 10/1/2025
+//@last updated: 10/6/2025
 //@purpose: Fishing game
 
 //iostream
@@ -11,10 +11,14 @@ using namespace std;
 //game start
 int main()
 {
-    int dollar = 0;
-    int rod_cost = 5;
-    int fish_skill = 5;
-    string choice;
+    int dollar = 0;//money
+    int rod_cost = 5;//shop items
+    int bait_cost = 50;
+
+    int fish_skill = 5;//fishing lvl
+    int bait_num = 0;//bait amount
+
+    string choice;//inputs
     string shopping;
 
     while (choice!="0"){//begin game loop
@@ -34,6 +38,7 @@ int main()
         }
         while(choice == "2"){//shopping
             cout<<"New Fishing Rod\t-\t"<<rod_cost<<endl;//list of shop items
+            cout<<"Fish Bait\t-\t"<<bait_cost<<endl;
 
             cout<<"you have $"<<dollar<<endl;//end of list always
             cin>>shopping;
@@ -43,7 +48,13 @@ int main()
                 rod_cost = (rod_cost * 4);
                 cout<<"You got a new fishing rod, your fishing level is now "<<fish_skill<<"."<<endl;
             }
-            else if (shopping =="rod" and dollar<rod_cost){//poor :(
+            if (shopping == "bait" and dollar>= bait_cost){
+                fish_skill += 10;
+                dollar -= bait_cost;//REMEMBER TO LOWER CASH
+                rod_cost = (bait_cost * 7);
+                cout<<"You got ten pieces of bait."<<endl;
+            }
+            else {//poor :(
                 cout<<"You can't afford that right now."<<endl;
             }
             cout<<"\n Press 1 to go back to menu, Press 2 to keep shopping"<<endl;
