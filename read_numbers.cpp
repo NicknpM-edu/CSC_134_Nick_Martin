@@ -12,17 +12,12 @@ using namespace std;
 int main()
 {
     ifstream inputFile;
-    inputFile.open("friends.txt");//open file
-    string friends;
-    int count = 0;//count for formating
-    while( inputFile >> friends){//print all names in file
-        cout<< friends<< " "; 
-        count++;
-        if ((count%2)== 0){//do the formatting
-            cout<<endl;
+    inputFile.open("numbers.txt");//open file
+    int numbers;
+    while(inputFile >> numbers){//print all names in file
+        cout<< numbers<<endl; 
         }
-    }
-
+    
     inputFile.close();//cLOSE file
     //end method
     return 0;
