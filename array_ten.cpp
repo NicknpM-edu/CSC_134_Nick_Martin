@@ -3,7 +3,6 @@
 //@purpose: This program takes a list of grades and prints the average
 
 //iostream
-#include <fstream>
 #include <iostream>
 
 using namespace std;
