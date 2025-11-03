@@ -1,0 +1,14 @@
+11/5 quiz: 
+    345 triangle atan2(y,x) for angle
+    know loops logic
+    know data types-int, float,boolean, double 
+    ^ not objects, they're primitives vs arrays and strings(?) are objects
+    headers, specifically files(fstream, ofstream, ifstream)
+    array numbering
+    mod-ten check
+        luhn algorythm- made by hans peter luhn
+        array.length()
+        luhn algo = go from backwards, double every odd number-(if more than ten minus nine), 
+        ^add all together, if divisible by ten it passes
+
+

@@ -1,22 +1,23 @@
 //@author: Nick Martin
 //@date started: 10/1/2025
-//@last updated: 10/6/2025
+//@last updated: 11/3/2025
 //@purpose: Fishing game
+//@todo: save file function, more shop items, finish rearranging store functional
 
 //iostream
 #include <iostream>
 #include <string>
 using namespace std;
 
+
 //game start
 int main()
 {
     int dollar = 0;//money
-    int rod_cost = 5;//shop items
-    int bait_cost = 50;
-
-    int fish_skill = 5;//fishing lvl
+    int fish_skill = 5;//fishing lvl perm
     int bait_num = 0;//bait amount
+    string shop_list[2]={"rod","bait"};//shop items
+    int shop_cost[shop_list.length()] = {5,50};//cost of shop items
 
     string choice;//inputs
     string shopping;
@@ -27,13 +28,14 @@ int main()
         cin>>choice;
 
         while(choice == "1"){//fishing game
-            int value = ((rand() % fish_skill) + 1);// the result is ranges from 1 to 5
-            int size = ((rand() % 1) + 1);//size fish
+            int fish_full = 0;//impermenent add(bait)
             if (bait_num){
                 bait_num -= 1; //take bait
-                fish_skill +=
-
+                fish_full += 10;//better fish
+                cout<<"you have "<<bait_num<<"bait"<<endl;
             }
+            int value = ((rand() % fish_skill+fish_full) + 1);// the result is ranges from 1 to 5
+            int size = ((rand() % 1) + 1);//size fish
             cout<<"You got a size "<<size<<" fish, you sell it for $"<<value<<endl;//fish output
             dollar += value;// add to cash
 
@@ -42,8 +44,8 @@ int main()
             cin>>choice;
         }
         while(choice == "2"){//shopping
-            cout<<"New Fishing Rod\t-\t"<<rod_cost<<endl;//list of shop items
-            cout<<"Fish Bait\t-\t"<<bait_cost<<endl;
+            cout<<"1. New Fishing Rod\t-\t"<<rod_cost<<endl;//list of shop items
+            cout<<"2. Fish Bait\t-\t"<<bait_cost<<endl;
 
             cout<<"you have $"<<dollar<<endl;//end of list always
             cin>>shopping;
@@ -55,7 +57,7 @@ int main()
             }
             if (shopping == "bait" and dollar>= bait_cost){
                 dollar -= bait_cost;//REMEMBER TO LOWER CASH
-                rod_cost = (bait_cost * 7);
+                bait_cost = (bait_cost * 7);
                 bait_num = 10;
                 cout<<"You got ten pieces of bait."<<endl;
             }
