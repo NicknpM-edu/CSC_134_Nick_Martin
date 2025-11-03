@@ -17,7 +17,7 @@ using namespace std;
 //game start
 int main()
 {
-    string scard = "340000000000009";
+    string scard = "5500000000000004";
     int list_length = scard.length()-1;
     int card[list_length];
     int total = 0;
@@ -28,20 +28,22 @@ int main()
         x=scard[count];
         y = stoi(x);
         card[count]= y;
-    }
+    }   
     for(int count = list_length;count>=0;count--){//go through list backwards
-        if(count%2 or count == 0 or count == list_length){
-            int mult = card[count];
+        if((count+1)%2){
+            int mult = card[count]*2;
+            cout<<card[count]<<endl;
             if (mult >9){
                 mult = mult - 9;
             }
+            cout<<mult<<endl;
             total+= mult;
         }
         else{
             total += card[count];
-            cout<<card[count]<<endl;
         }
     }
+    cout<<total<<endl;
     if (total%10){
         cout<<"your card is not valid";
     }
