@@ -1,8 +1,8 @@
 //@author: Nick Martin
 //@date started: 10/1/2025
-//@last updated: 11/3/2025
+//@last updated: 11/5/2025
 //@purpose: Fishing game
-//@todo: save file function, more shop items, finish rearranging store functional
+//@todo: save file function, more shop items, leveling system?, lore?
 
 //iostream
 #include <iostream>
@@ -16,8 +16,9 @@ int main()
     int dollar = 0;//money
     int fish_skill = 5;//fishing lvl perm
     int bait_num = 0;//bait amount
-    string shop_list[2]={"rod","bait"};//shop items
-    int shop_cost[shop_list.length()] = {5,50};//cost of shop items
+    int num_items = 2;
+    string shop_list[num_items]={"rod","bait"};//shop items
+    int shop_cost[num_items] = {5,50};//cost of shop items
 
     string choice;//inputs
     string shopping;
@@ -32,7 +33,7 @@ int main()
             if (bait_num){
                 bait_num -= 1; //take bait
                 fish_full += 10;//better fish
-                cout<<"you have "<<bait_num<<"bait"<<endl;
+                cout<<"you have "<<bait_num<<" bait left "<<endl;
             }
             int value = ((rand() % fish_skill+fish_full) + 1);// the result is ranges from 1 to 5
             int size = ((rand() % 1) + 1);//size fish
@@ -44,26 +45,29 @@ int main()
             cin>>choice;
         }
         while(choice == "2"){//shopping
-            cout<<"1. New Fishing Rod\t-\t"<<rod_cost<<endl;//list of shop items
-            cout<<"2. Fish Bait\t-\t"<<bait_cost<<endl;
+            for(int count=0;count<=num_items-1;count++){//print shop inventory
+                cout<<shop_list[count]<<"\t-\t"<<shop_cost[count]<<endl;
+            }
 
             cout<<"you have $"<<dollar<<endl;//end of list always
             cin>>shopping;
-            if (shopping == "rod" and dollar>= rod_cost){
+        
+            if (shopping == shop_list[0] and dollar>= shop_cost[0]){
                 fish_skill += 3;
-                dollar -= rod_cost;//REMEMBER TO LOWER CASH
-                rod_cost = (rod_cost * 4);
+                dollar -= shop_cost[0];//REMEMBER TO LOWER CASH
+                shop_cost[0] = (shop_cost[0] * 4);
                 cout<<"You got a new fishing rod, your fishing level is now "<<fish_skill<<"."<<endl;
             }
-            if (shopping == "bait" and dollar>= bait_cost){
-                dollar -= bait_cost;//REMEMBER TO LOWER CASH
-                bait_cost = (bait_cost * 7);
+            else if (shopping == shop_list[1] and dollar>= shop_cost[1]){
+                dollar -= shop_cost[1];//REMEMBER TO LOWER CASH
+                shop_cost[0] = (shop_cost[1] * 7);
                 bait_num = 10;
                 cout<<"You got ten pieces of bait."<<endl;
             }
             else {//poor :(
                 cout<<"You can't afford that right now."<<endl;
             }
+            
             cout<<"\n Press 1 to go back to menu, Press 2 to keep shopping"<<endl;
             cin>>choice;
         }
