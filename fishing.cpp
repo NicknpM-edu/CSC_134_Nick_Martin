@@ -1,6 +1,6 @@
 //@author: Nick Martin
 //@date started: 10/1/2025
-//@last updated: 11/5/2025
+//@last updated: 11/10/2025
 //@purpose: Fishing game
 //@todo: save file function, more shop items, leveling system?, lore?
 
@@ -33,15 +33,15 @@ int main()
             if (bait_num){
                 bait_num -= 1; //take bait
                 fish_full += 10;//better fish
-                cout<<"you have "<<bait_num<<" bait left "<<endl;
             }
-            int value = ((rand() % fish_skill+fish_full) + 1);// the result is ranges from 1 to 5
+            int value = ((rand() % (fish_skill+fish_full)) + 1);// the result is ranges from 1 to 5
             int size = ((rand() % 1) + 1);//size fish
             cout<<"You got a size "<<size<<" fish, you sell it for $"<<value<<endl;//fish output
             dollar += value;// add to cash
 
 
             cout<<"\nYou have $"<<dollar<<". press 1 to keep fishing, press 2 to go shopping"<<endl; //ask for more fish or end
+            cout<<"you have "<<bait_num<<" bait "<<endl;
             cin>>choice;
         }
         while(choice == "2"){//shopping
@@ -52,15 +52,15 @@ int main()
             cout<<"you have $"<<dollar<<endl;//end of list always
             cin>>shopping;
         
-            if (shopping == shop_list[0] and dollar>= shop_cost[0]){
+            if (shopping == shop_list[0] and dollar>= shop_cost[0]){//rod
                 fish_skill += 3;
                 dollar -= shop_cost[0];//REMEMBER TO LOWER CASH
                 shop_cost[0] = (shop_cost[0] * 4);
                 cout<<"You got a new fishing rod, your fishing level is now "<<fish_skill<<"."<<endl;
             }
-            else if (shopping == shop_list[1] and dollar>= shop_cost[1]){
+            else if (shopping == shop_list[1] and dollar>= shop_cost[1]){//bait
                 dollar -= shop_cost[1];//REMEMBER TO LOWER CASH
-                shop_cost[0] = (shop_cost[1] * 7);
+                shop_cost[1] = (shop_cost[1] * 7);
                 bait_num = 10;
                 cout<<"You got ten pieces of bait."<<endl;
             }
